@@ -37,6 +37,25 @@ app.get('/read/usernames', (req, res) => {
   res.send(usernames);
 });
 
+
+app.use('/read/username/:name', addMsgToRequest);
+
+app.get('/read/username/:name', (req, res) => {
+  console.log("inside get");
+  let username =req.params.name;
+  let data=req.users.filter(function(user){
+    return user.name === username;
+  });
+  console.log(data);
+  if(data.length==0){
+    res.status(404).send('User not found');
+  } 
+  else{
+   res.json(data);
+  }
+});
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/write/adduser', addMsgToRequest);
