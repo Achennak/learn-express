@@ -11,7 +11,7 @@ const writeUsers = require('./writeUsers');
 let users;
 fs.readFile(path.resolve(__dirname, '../data/users.json'), function(err, data) {
   console.log('reading file ... ');
-  if(err) throw err;
+  if(err) console.log('Failed to write');;
   users = JSON.parse(data);
 })
 
