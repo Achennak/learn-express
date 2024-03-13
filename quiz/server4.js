@@ -31,6 +31,8 @@ const addMsgToRequest = function (req, res, next) {
 app.use(
   cors({origin: 'http://localhost:3000'})
 );
+
+//add middleware to all incoming requests
 app.use(addMsgToRequest);
 
 app.use('/read', readUsers);

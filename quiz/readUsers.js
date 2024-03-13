@@ -13,4 +13,19 @@ router.get('/usernames', (req, res) => {
   res.send(usernames);
 });
 
+router.get('/username/:name', (req, res) => {
+    console.log("inside get");
+    let username =req.params.name;
+    let data=req.users.filter(function(user){
+      return user.name === username;
+    });
+    console.log(data);
+    if(data.length==0){
+      res.status(404).send('User not found');
+    } 
+    else{
+     res.json(data);
+    }
+  });
+
 module.exports = router

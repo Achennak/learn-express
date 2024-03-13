@@ -39,6 +39,8 @@ app.get('/read/usernames', (req, res) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//add middleware to particular endpoint
 app.use('/write/adduser', addMsgToRequest);
 
 app.post('/write/adduser', (req, res) => {
